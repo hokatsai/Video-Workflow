@@ -8,3 +8,5 @@
 
 2025-11-17 - yt-dlp edge cookie attempt :: tried --cookies-from-browser edge but Windows profile inaccessible; needs exported cookies | failure log | 03-outputs/yt-dlp-downloader/20251117-033948/run.log
 
+2025-11-17 - yt-dlp tool removed :: deleted yt-dlp-downloader tool/docs/outputs per user request | repo reset to baseline scaffold | n/a
+
