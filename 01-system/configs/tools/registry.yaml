@@ -1,0 +1,18 @@
+# Tool Registry ¡ª Single Source of Truth
+# Each tool entry:
+# - name: unique-id
+#   category: llms|ops|stt|tts|vision|web|data|io|...
+#   args_schema: {}          # optional JSON Schema-style summary
+#   side_effects: []         # e.g., ["fs:03-outputs/<tool>/..."]
+#   timeout_s: 600
+tools:
+  - name: yt-dlp-downloader
+    category: ops
+    args_schema:
+      url: string
+      format: string
+      output_dir: string
+      additional_args: string[]
+    side_effects:
+      - "fs:03-outputs/yt-dlp-downloader/"
+    timeout_s: 900

@@ -1,0 +1,10 @@
+# System Memory
+
+2025-11-17 - Bootstrap baseline :: scaffolded canonical runtime per INITIAL_SYSTEM_PROMPT | AGENTS spec + DocSync stubs ready | 03-outputs/bootstrap/bootstrap-log.md
+2025-11-17 - Playbook update :: added "Answer In Traditional Chinese" entry to enforce zh-TW replies | ensures conversational constraint recorded | no artifact
+2025-11-17 - yt-dlp tool onboarding :: registered yt-dlp-downloader tool, scripts, docs, and playbooks | enables standardized YouTube downloads | 03-outputs/yt-dlp-downloader/
+
+2025-11-17 - yt-dlp cookies support :: added cookies-from-browser/file options + doc/playbook updates | enables auth-only downloads | 03-outputs/yt-dlp-downloader/20251117-033602/run.log
+
+2025-11-17 - yt-dlp edge cookie attempt :: tried --cookies-from-browser edge but Windows profile inaccessible; needs exported cookies | failure log | 03-outputs/yt-dlp-downloader/20251117-033948/run.log
+
