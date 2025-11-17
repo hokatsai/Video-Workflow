@@ -5,4 +5,23 @@
 #   args_schema: {}          # optional JSON Schema-style summary
 #   side_effects: []         # e.g., ["fs:03-outputs/<tool>/..."]
 #   timeout_s: 600
-tools: []
+tools:
+  - name: gemini-cli
+    category: llms
+    args_schema:
+      type: object
+      properties:
+        targets:
+          type: array
+          items:
+            type: string
+        query:
+          type: string
+        model:
+          type: string
+        output_name:
+          type: string
+      required: ["targets", "query"]
+    side_effects:
+      - "fs:03-outputs/gemini-cli/<run-id>/"
+    timeout_s: 900
