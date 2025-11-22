@@ -6,22 +6,22 @@
 #   side_effects: []         # e.g., ["fs:03-outputs/<tool>/..."]
 #   timeout_s: 600
 tools:
-  - name: gemini-cli
-    category: llms
-    args_schema:
-      type: object
-      properties:
-        targets:
-          type: array
-          items:
+  - tool:
+      name: codebase_investigator
+      category: ops
+      description: >
+        The specialized tool for codebase analysis, architectural mapping, and understanding system-wide dependencies. 
+        Invoke this tool for tasks like vague requests, bug root-cause analysis, system refactoring, comprehensive feature implementation or to answer questions about the codebase that require investigation. 
+        It returns a structured report with key file paths, symbols, and actionable architectural insights.
+      args_schema:
+        type: object
+        properties:
+          objective:
             type: string
-        query:
-          type: string
-        model:
-          type: string
-        output_name:
-          type: string
-      required: ["targets", "query"]
-    side_effects:
-      - "fs:03-outputs/gemini-cli/<run-id>/"
-    timeout_s: 900
+            description: >
+              A comprehensive and detailed description of the user's ultimate goal. 
+              You must include original user's objective as well as questions and any extra context and questions you may have.
+        required:
+          - objective
+      command: >
+        review --objective="{objective}"
