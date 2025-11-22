@@ -26,30 +26,30 @@ Write-Host "--- Starting Optimized Video Analysis for '$VideoPath' ---" -Foregro
 
 # --- Configuration ---
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
-$rootDir = (Resolve-Path -Path (Join-Path -Path $scriptDir -ChildPath "..")).Path
+$rootDir = (Resolve-Path -Path (Join-Path -Path $scriptDir -ChildPath "..\..")).Path
 $venvPath = Join-Path -Path $rootDir -ChildPath ".venv"
 $tempAudioChunksDir = Join-Path -Path $rootDir -ChildPath "03-outputs\temp_audio_chunks"
 $summariesOutputDir = "E:\Video-Workflow\03-outputs\summaries\声乐教学总结" # Hardcoded as per memory
 
 # --- Pre-flight Check: Ensure Venv is active ---
-if (-not ($env:VIRTUAL_ENV -and (Test-Path $env:VIRTUAL_ENV -PathType Container))) {
-    Write-Warning "Python virtual environment not active. Please activate it first (e.g., .venv\Scripts\Activate.ps1)."
-    # For now, we'll try to use the pip from the venv directly
-    $pipPath = Join-Path -Path $venvPath -ChildPath "Scripts\pip.exe"
-    if (-not (Test-Path $pipPath)) {
-        Write-Error "Virtual environment or pip executable not found. Please run setup-video-env.ps1 first."
-        exit 1
-    }
-    $whisperxPath = Join-Path -Path $venvPath -ChildPath "Scripts\whisperx.exe"
-} else {
-    Write-Host "Python virtual environment is active."
-    $whisperxPath = (Get-Command whisperx -ErrorAction SilentlyContinue).Source
-}
+# **CRITICAL CHANGE: Always use paths relative to the virtual environment**
+$pythonPath = Join-Path -Path $venvPath -ChildPath "Scripts\python.exe"
+$whisperxPath = Join-Path -Path $venvPath -ChildPath "Scripts\whisperx.exe"
+# --- End CRITICAL CHANGE ---
 
-if (-not (Test-Path $whisperxPath)) {
-    Write-Error "whisperx executable not found. Please ensure it's installed in your virtual environment."
+if (-not (Test-Path $venvPath -PathType Container)) {
+    Write-Error "Virtual environment '.venv' not found at '$venvPath'. Please run setup-video-env.ps1 first."
     exit 1
 }
+if (-not (Test-Path $pythonPath)) {
+    Write-Error "Python executable not found in virtual environment at '$pythonPath'. Please check your virtual environment setup."
+    exit 1
+}
+if (-not (Test-Path $whisperxPath)) {
+    Write-Error "whisperx executable not found in virtual environment at '$whisperxPath'. Please run setup-video-env.ps1 first."
+    exit 1
+}
+Write-Host "Python virtual environment and whisperx executable verified."
 
 # --- Cleanup previous temp chunks (if any) ---
 if (Test-Path $tempAudioChunksDir) {
@@ -118,9 +118,9 @@ Write-Host "Step 4: Preparing aggregated timestamped transcript for LLM summariz
 $aggregatedSrtPath = Join-Path -Path $tempAudioChunksDir -ChildPath "aggregated_transcript.srt"
 Set-Content -Path $aggregatedSrtPath -Value $allSrtContent -Encoding UTF8
 
-Write-Host "--- Video Analysis ready for LLM summarization. ---" -ForegroundColor Green
-Write-Host "Aggregated SRT is at: $aggregatedSrtPath"
-Write-Host "Please provide the content of '$aggregatedSrtPath' to the LLM for timestamped summary."
+# --- Video Analysis ready for LLM summarization. ---
+# Output the aggregated SRT content to standard output for direct LLM processing
+[System.IO.File]::ReadAllText($aggregatedSrtPath, [System.Text.Encoding]::UTF8)
 
-# --- Cleanup (conceptual, will be done after LLM generates final output) ---
-# Remove-Item -Path $tempAudioChunksDir -Recurse -Force
+# --- Cleanup temporary audio chunks ---
+Remove-Item -Path $tempAudioChunksDir -Recurse -Force -ErrorAction SilentlyContinue

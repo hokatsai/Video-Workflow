@@ -59,12 +59,37 @@ Document common intents here using the Lean playbook format (phrase -> intent ->
   4. **Parallel Transcription**:
       a. For each audio chunk, run `whisperx` in a separate, parallel process. Generate timestamped output (e.g., `.srt` or `.json`).
       b. Use `--compute_type auto` to let `whisperx` choose the best backend, but have a fallback to `--compute_type float32` if a `float16` error occurs.
-  5. **Aggregation & Timestamped Summarization**:
+  5. **Aggregation & Pre-Summarization**:
       a. Concatenate the *timestamped* transcript data (e.g., from `.srt` files) from all chunks in the correct order.
-      b. Process the timestamped transcript to identify key concepts and associate them with their respective timestamps.
-  6. **Output & Cleanup**:
-      a. Save the final summary, **including timestamps**, to the user's preferred directory and format (`.txt` by default).
-      b. Delete the `temp_audio_chunks` directory.
+      b. The `analyze-video.ps1` script will output this aggregated SRT content to standard output and perform its own cleanup of temporary audio chunks.
+  6. **LLM Summarization & Final Output**:
+      a. Capture the standard output from `analyze-video.ps1` (which is the aggregated SRT content).
+      b. Process this aggregated SRT content using LLM capabilities to identify key concepts and associate them with their respective timestamps.
+      c. Save the final summary, **including timestamps**, to the user's preferred directory and format (`.txt` by default).
 - **Outputs**:
   - A summary file **with timestamps** (e.g., `03-outputs/summaries/声乐教学总结/Lesson_1_Summary_(带时间戳).txt`).
   - Temporary audio chunks during processing.
+
+## Playbook: Agent Self-Optimization & Workflow Review
+- **Phrases / Aliases**: "复盘流程", "优化agent", "分析优化空间", "系统架构师思考", "提升工作效率", "整体工作流优化", "agent更新", "playbook更新"
+- **Intent**: To conduct a comprehensive analysis of a specified (or last major) workflow, identify bottlenecks and root causes, propose and implement optimizations, and update the agent's internal documentation (AGENTS.md, PLAYBOOKS.md) and relevant scripts accordingly.
+- **Steps**:
+  1.  **Acknowledge & Clarify**: Confirm understanding of the request for self-optimization and clarify the target workflow if ambiguous.
+  2.  **Workflow Analysis**: Review the specified previous workflow, analyzing execution logs, outputs, and user feedback to identify inefficiencies, errors, and their root causes (e.g., environment brittleness, network friction, script logic flaws, tool limitations, interactive overhead).
+  3.  **Identify Bottlenecks & Root Causes**: Detail specific points of failure or slowness (e.g., Git SSL errors, ead_file ignore patterns, manual steps, redundant actions).
+  4.  **Propose Optimization Plan**: Develop a structured plan for improvement, categorizing solutions into:
+      a.  **Script/Tool Refactoring**: Modifying/creating internal scripts (e.g., nalyze-video.ps1).
+      b.  **Documentation Updates**: Updating PLAYBOOKS.md, AGENTS.md.
+      c.  **Tool/Memory Enhancements**: Suggesting new tool features or memory facts.
+      d.  **User-side Actions**: Identifying persistent issues requiring user intervention (e.g., network configuration).
+  5.  **Implement Changes (Build Mode)**:
+      a.  Execute script/tool modifications using eplace or write_file.
+      b.  Update PLAYBOOKS.md and AGENTS.md.
+      c.  Create new scripts/tools in appropriate directories (e.g., 	ools/video/).
+  6.  **Verify & Test**: Where feasible, run small tests (e.g., pre-flight checks) to verify the implemented optimizations.
+  7.  **Document & Commit**: Commit all changes to version control with a comprehensive message detailing the optimizations.
+  8.  **Report to User**: Summarize the optimizations implemented, explain how the new/modified playbooks/scripts work, highlight any remaining user-side dependencies, and provide instructions for future use.
+- **Outputs**:
+  - Updated AGENTS.md, PLAYBOOKS.md.
+  - New/modified scripts/tools (e.g., 	ools/video/analyze-video.ps1).
+  - Git commit reflecting these changes.
