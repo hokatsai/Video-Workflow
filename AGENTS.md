@@ -212,3 +212,18 @@ safety:
 ---
 
 **æœ¬è¦ç¯„ç‚ºå”¯ä¸€æ¬Šå¨ä¾†æºã€‚**
+
+## Ïµ½y¼Ü˜‹ŽŸÄ£Ê½ (Systems Architect Mode)
+- **Ó|°l—l¼þ**: ®”Ê¹ÓÃÕßÕˆÇóŒ¦¹¤×÷Á÷³ÌßMÐÐÑ}±P¡¢ƒž»¯¡¢»ò½â›Q¸ù±¾ÐÔ†–î}•r£¨ÀýÈç£º¡¸ŽÍÎÒÑ}±PÒ»ÏÂ¡¹¡¢¡¸ƒž»¯¹¤×÷Á÷¡¹¡¢¡¸ÕÒ³ö†–î}K½â›Q¡¹£©¡£
+- **ºËÐÄÒâˆD**: ÌøÃ“†Î¼ƒµÄÖ¸ÁîˆÌÐÐ£¬ÒÔ¼Ü˜‹ŽŸµÄÒ•½Ç·ÖÎö¡¢ÔOÓ‹K¹Ì»¯¸ü½¡‰Ñ¡¢¸ßÐ§µÄ×Ô„Ó»¯½â›Q·½°¸¡£
+- **ˆÌÐÐ²½óE**:
+  1. **Ñ}ÅÌ·ÖÎö (Review & Analyze)**: È«Ãæ™zÒ•ÏÈÇ°µÄ¹¤×÷Á÷£¬×R„eÆäÖÐµÄ¡¸­h¾³Ä¦²Á¡¹¡¢¡¸¾WÂ·Ä¦²Á¡¹Åc¡¸½»»¥Ä¦²Á¡¹¡£
+  2. **¸ù±¾Ô­Òò¶¨Î» (Root Cause Analysis)**: ÕÒ³öŒ§ÖÂÁ÷³ÌÈßéL»òÊ§”¡µÄ¸ù±¾Ô­Òò£¬ÀýÈç­h¾³Î´Öª¡¢ÒÀÙ‡í—È±Ê§¡¢´óÐÍ†Îów²Ù×÷µÈ¡£
+  3. **Ìá³öƒž»¯·½°¸ (Propose New Architecture)**: ÔOÓ‹ÐÂµÄ¡¢Ä£½M»¯µÄ¹¤×÷Á÷„¡±¾£¨Playbook£©£¬°üº¬­h¾³îA™z¡¢ÈÎ„Õ²ð·Ö¡¢KÐÐÌŽÀí¡¢½Y¹û…R¿‚µÈ²ßÂÔ¡£
+  4. **¹Ì»¯¹¤×÷Á÷ (Codify Workflow)**:
+     - Œ¢ÐÂµÄ Playbook Œ‘Èë  1-system/docs/agents/PLAYBOOKS.md¡£
+     - „“½¨KµÇä›Œ¬FÐÂÁ÷³ÌËùÐèµÄÄ_±¾Åc¹¤¾ß£¨ÀýÈç equirements.txt, setup-video-env.ps1£©¡£
+     - ¸üÐÂ±¾™n°¸ (AGENTS.md)£¬ów¬FÐÂÔöµÄÄÜÁ¦Åc½ÇÉ«¡£
+- **®a³ö**:
+  - ¸üÐÂááµÄ PLAYBOOKS.md Åc AGENTS.md¡£
+  - ÓÃì¶Œ¬F×Ô„Ó»¯Á÷³ÌµÄÐÂ¹¤¾ß»òÄ_±¾¡£

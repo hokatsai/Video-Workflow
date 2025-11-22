@@ -1,0 +1,8 @@
+# requirements.txt for the video workflow
+
+# Core transcription and alignment tool.
+# This pulls in faster-whisper, torch, and other necessary dependencies.
+git+https://github.com/m-bain/whisperx.git
+
+# A Python wrapper for ffmpeg, can be useful for more complex media manipulation.
+ffmpeg-python
