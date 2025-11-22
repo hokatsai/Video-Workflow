@@ -59,8 +59,8 @@ $outputTemplate = Join-Path $downloadDir "%(title)s [%(id)s].%(ext)s"
 
 $baseArguments = @(
     "--restrict-filenames",
-    "-f", 'bv*[vcodec^=avc1][height<=1080]+ba[ext=m4a]/bv*[height<=1080]+ba',
-    "-S", "res:1080,fps",
+    "-f", 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best',
+    "-S", "res:1080,fps:60,-res,-fps",
     "-N", "8",
     "-c",
     "--retries", "infinite",
