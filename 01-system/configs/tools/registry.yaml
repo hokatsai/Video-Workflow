@@ -363,6 +363,41 @@ tools:
       command: >
         .\.venv\Scripts\python.exe 01-system/tools/stt/groq_stt_pipeline.py --input_dir {input_dir} --output_base {output_base} --language {language} --prompt {prompt} --run_id {run_id} --max_size_mb {max_size_mb} --ogg_bitrate {ogg_bitrate} [--no_combine] [--no_ogg_fallback] --combine_filename {combine_filename}
   - tool:
+      name: eleven_scribe_pipeline
+      category: stt
+      description: "Transcribes audio/video with ElevenLabs scribe_v1, outputs text+SRT, and optionally combines plain text transcripts."
+      args_schema:
+        type: object
+        properties:
+          input_dir:
+            type: string
+            description: "Directory containing audio/video files to process."
+          output_base:
+            type: string
+            description: "Base output directory (default 03-outputs/eleven_scribe_pipeline)."
+          language:
+            type: string
+            description: "Optional ISO language hint."
+          run_id:
+            type: string
+            description: "Optional run identifier override."
+          max_size_mb:
+            type: number
+            description: "Maximum compressed file size before STT (default 100)."
+          timestamps_granularity:
+            type: string
+            description: "none|word|character (default word)."
+          no_combine:
+            type: boolean
+            description: "Skip the combined Markdown output."
+          combine_filename:
+            type: string
+            description: "Name for the combined Markdown file."
+        required:
+          - input_dir
+      command: >
+        .\.venv\Scripts\python.exe 01-system/tools/stt/eleven_scribe_pipeline.py --input_dir {input_dir} --output_base {output_base} --language {language} --run_id {run_id} --max_size_mb {max_size_mb} --timestamps_granularity {timestamps_granularity} [--no_combine] --combine_filename {combine_filename}
+  - tool:
       name: gemini_text_generator
       category: llms
       description: "A Python module function to generate text using the Gemini API. Meant to be imported by other tools."

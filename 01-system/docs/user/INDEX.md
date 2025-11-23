@@ -5,3 +5,4 @@
 - 工具清單：
   - Gemini CLI：`01-system/docs/user/tools/gemini-cli.md`
   - Groq STT Pipeline：`01-system/docs/user/tools/groq_stt_pipeline.md`
+  - Eleven Scribe Pipeline：`01-system/docs/user/tools/eleven_scribe_pipeline.md`

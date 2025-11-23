@@ -6,6 +6,7 @@
 | gemini (module) | llms | Core Python module for other tools to call the Gemini API (`generate_text` function). | N/A (library) |
 | audio_compressor | ops | Compresses an audio file to a specified bitrate. | 03-outputs/audio_compressor/ |
 | groq_stt_pipeline | stt | Groq whisper-large-v3 STT with pre-compression, text/SRT outputs, optional combined markdown. | 03-outputs/groq_stt_pipeline/ |
+| eleven_scribe_pipeline | stt | ElevenLabs scribe_v1 STT with pre-compression, text/SRT outputs, optional combined markdown. | 03-outputs/eleven_scribe_pipeline/ |
 | clips_adapter | ops | Adapts a video clip to a new resolution and/or frame rate. | 03-outputs/clips_adapter/ |
 | clips_copy_exporter | ops | Copies or moves files to an export directory. | 03-outputs/clips_copy_exporter/ |
 | clips_orchestrator | ops | Automates the process of extracting, adapting, and exporting multiple video clips from a single source video. | 03-outputs/clips_orchestrator/ |

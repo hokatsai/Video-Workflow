@@ -75,12 +75,21 @@ equirements.txt.
 
 ## Playbook: Groq STT Project Memos
 - **Phrases / Aliases**: "Groq STT", "專案錄音轉文字", "批次轉錄並合併 Markdown", "生成 SRT + 純文字"
-- **Intent**: 將專案資料夾中的多個錄音檔或影片先壓縮/撥取音訊並受限，再用 Groq `whisper-large-v3` 轉成純文字與 SRT，並可依檔名順序合併成單一 Markdown（無時間戳）。
+- **Intent**: 將專案資料夾中的多個錄音檔或影片先壓縮/擷取音訊，再用 Groq `whisper-large-v3` 轉成純文字與 SRT，並可依檔名順序合併成單一 Markdown（無時間戳）。
 - **Steps**:
   1. 確認輸入資料夾、語言提示（可空白）、是否需要合併純文字；提醒 Groq free tier 單檔上限 25 MB，模型固定 `whisper-large-v3`。
-  2. 在 repo root 執行 `.\.venv\Scripts\python.exe 01-system/tools/stt/groq_stt_pipeline.py --input_dir "<folder>" [--language <iso>] [--prompt "<style>"] [--no_combine]`。預設先轉 16k mono FLAC，若超限會自動 OGG fallback（48k）；影片會自動撥取音訊再送 STT。
+  2. 在 repo root 執行 `.\.venv\Scripts\python.exe 01-system/tools/stt/groq_stt_pipeline.py --input_dir "<folder>" [--language <iso>] [--prompt "<style>"] [--no_combine]`。預設先轉 16k mono FLAC，若超限會自動 OGG fallback（48k）；影片會自動擷取音訊再送 STT。
   3. 取得輸出：`transcripts/*.md`（純文字）、`subtitles/*.srt`（帶時間戳）、`raw/*.json`（原始回應）、`combined/<name>.md`（合併純文字，可關閉）、`run_meta.json`。
 - **Outputs**: `03-outputs/groq_stt_pipeline/<run-id>/...`
+
+## Playbook: ElevenLabs Scribe Memo
+- **Phrases / Aliases**: "ElevenLabs STT", "scribe_v1", "ElevenLabs 轉錄 memo", "用 elevenlabs 合併錄音"
+- **Intent**: 使用 ElevenLabs `scribe_v1` 將專案資料夾中的錄音/影片轉成純文字與 SRT，並依檔名順序合併純文字 Markdown（無時間戳）。
+- **Steps**:
+  1. 確認 `XI_API_KEY` 已設，輸入資料夾與語言提示（可空白），是否需要合併純文字。
+  2. 在 repo root 執行 `.\.venv\Scripts\python.exe 01-system/tools/stt/eleven_scribe_pipeline.py --input_dir "<folder>" [--language <iso>] [--timestamps_granularity word|character|none] [--no_combine]`。工具會自動 16k mono FLAC 壓縮並同步送至 ElevenLabs。
+  3. 取得輸出：`transcripts/*.md`、`subtitles/*.srt`、`raw/*.json`、`combined/<name>.md`（可關閉）、`run_meta.json`，路徑位於 `03-outputs/eleven_scribe_pipeline/<run-id>/...`。
+- **Outputs**: `03-outputs/eleven_scribe_pipeline/<run-id>/...`
 
 ## Playbook: Agent Self-Optimization & Workflow Review
 - **Phrases / Aliases**: "复盘流程", "优化agent", "分析优化空间", "系统架构师思考", "提升工作效率", "整体工作流优化", "agent更新", "playbook更新"

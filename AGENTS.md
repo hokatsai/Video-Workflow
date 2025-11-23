@@ -38,7 +38,7 @@
     - prompts/{README.md, INDEX.md, examples/prompt-template.md, prompt-*.md, collections/...}
     - tools-reference/{README.md, INDEX.md, TEMPLATE.md, <tool>.md}
     - api-reference/{README.md, Groq STT API Doc.md, Groq STT API Reference.md}
-    - user/{README.md, INDEX.md, tools/{audio_compressor.md, video_cutter.md, clips_adapter.md, clips_copy_exporter.md, clips_orchestrator.md, lecture_handout_local_pipeline.md, lecture_handout_pipeline.md, memo_article_pipeline.md, memo_transcript_pipeline.md, subtitle_corrector.md, subtitle_line_refiner.md, subtitle_pipeline.md, zh_subtitle_converter.md, gemini.md, groq_stt_pipeline.md}}
+    - user/{README.md, INDEX.md, tools/{audio_compressor.md, video_cutter.md, clips_adapter.md, clips_copy_exporter.md, clips_orchestrator.md, lecture_handout_local_pipeline.md, lecture_handout_pipeline.md, memo_article_pipeline.md, memo_transcript_pipeline.md, subtitle_corrector.md, subtitle_line_refiner.md, subtitle_pipeline.md, zh_subtitle_converter.md, gemini.md, groq_stt_pipeline.md, eleven_scribe_pipeline.md}}
   - tools/
     - llms/
       - gemini-cli/{README.md, gemini-run.ps1}
@@ -75,7 +75,7 @@
       - zh_subtitle_converter.py
       - zh_subtitle_converter.playbook.md
       - tool.py
-    - stt/{groq_stt_pipeline.py}
+    - stt/{groq_stt_pipeline.py, eleven_scribe_pipeline.py}
     - _categories-README.md
 - 02-inputs/{downloads/}
 - 03-outputs/{README.md, <tool>/}
