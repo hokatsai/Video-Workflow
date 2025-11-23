@@ -1,6 +1,6 @@
 # Gemini CLI
 **分類**：llms  
-**主要 CLI/腳本**：`gemini`、`pwsh tools/gemini-run.ps1`  
+**主要 CLI/腳本**：`gemini`、`pwsh 01-system/tools/llms/gemini-cli/gemini-run.ps1`  
 **輸出位置**：`03-outputs/gemini-cli/<run-id>/`
 
 ## 何時使用
@@ -12,7 +12,7 @@
 1. **選定範圍**：以 repo root 為基準決定 `@` 路徑（檔案或目錄）。
 2. **執行腳本（建議）**：  
    ```powershell
-   pwsh tools/gemini-run.ps1 -Targets @('src/', 'tests/') -Query '請比較架構與測試覆蓋' [-Model 'gemini-1.5-pro']
+   pwsh 01-system/tools/llms/gemini-cli/gemini-run.ps1 -Targets @('src/', 'tests/') -Query '請比較架構與測試覆蓋' [-Model 'gemini-1.5-pro']
    ```
    - 腳本會建立 `03-outputs/gemini-cli/<timestamp>/`，內含 `prompt.txt` 與 `response.txt`。
 3. **檢閱與回報**：摘要回答並在最終訊息引用輸出路徑；若結果影響執行狀態，記錄在 `SYSTEM_MEMORY.md`。

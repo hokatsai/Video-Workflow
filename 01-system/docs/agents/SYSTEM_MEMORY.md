@@ -14,3 +14,4 @@
 2025-11-17 - Gemini CLI tooling :: registered gemini-cli tool + helper scripts + zh-TW docs/playbooks | enables logged Gemini-based large code analysis | 03-outputs/gemini-cli/
 
 2025-11-18 - Tool reference hub + AGENTS zh :: added docs/tools-reference/ + zh-TW rewrite of AGENTS with reference reminders | ensures tool usage documented + user can read core spec | 03-outputs/gemini-cli/
+2025-11-23 - Tools relocated to system :: change | impact: moved root tools into 01-system/tools (video-workflow, gemini-run) and updated paths/docs | artifacts: n/a

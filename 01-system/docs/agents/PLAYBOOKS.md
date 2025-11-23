@@ -15,7 +15,7 @@ Document common intents here using the Lean playbook format (phrase -> intent ->
 - **Intent**: Capture a macro-level summary of one or more directories/files that exceed in-context limits.
 - **Steps**:
   1. Confirm scope (directories/files) and expected focus (architecture, dependencies, etc.).
-  2. From repo root, run `pwsh tools/gemini-run.ps1 -Targets <paths> -Query "<prompt>" [-Model <override>]`.
+  2. From repo root, run `pwsh 01-system/tools/llms/gemini-cli/gemini-run.ps1 -Targets <paths> -Query "<prompt>" [-Model <override>]`.
   3. Inspect `response.txt` for the generated summary; relay key findings referencing the log path.
 - **Outputs**: `03-outputs/gemini-cli/<run-id>/response.txt`
 
@@ -24,7 +24,7 @@ Document common intents here using the Lean playbook format (phrase -> intent ->
 - **Intent**: Use Gemini CLI to verify whether a specific implementation (feature, pattern, safeguard) exists across modules.
 - **Steps**:
   1. Gather specific feature criteria plus target directories (e.g., `@src/ @api/`).
-  2. Execute `pwsh tools/gemini-run.ps1 -Targets <paths> -Query "Has <feature>? Show files/functions"` and capture the log.
+  2. Execute `pwsh 01-system/tools/llms/gemini-cli/gemini-run.ps1 -Targets <paths> -Query "Has <feature>? Show files/functions"` and capture the log.
   3. Summarize Gemini's findings, cite file paths, and note any follow-up manual inspections.
 - **Outputs**: `03-outputs/gemini-cli/<run-id>/response.txt`
 
@@ -41,8 +41,8 @@ Document common intents here using the Lean playbook format (phrase -> intent ->
   4.  Perform a "pre-flight check" by transcribing a very short, silent audio file to force all models to download and compile, catching any environment/hardware issues upfront.
   5.  Save the fact that the environment is ready for future tasks.
 - **Outputs**:
-  - 	ools/video/requirements.txt
-  - 	ools/video/setup-video-env.ps1
+  - 01-system/tools/ops/video-workflow/video/requirements.txt
+  - 01-system/tools/ops/video-workflow/video/setup-video-env.ps1
   - .venv directory (added to .gitignore).
 
 ## Playbook: Optimized Video Analysis
@@ -91,5 +91,5 @@ Document common intents here using the Lean playbook format (phrase -> intent ->
   8.  **Report to User**: Summarize the optimizations implemented, explain how the new/modified playbooks/scripts work, highlight any remaining user-side dependencies, and provide instructions for future use.
 - **Outputs**:
   - Updated AGENTS.md, PLAYBOOKS.md.
-  - New/modified scripts/tools (e.g., 	ools/video/analyze-video.ps1).
+  - New/modified scripts/tools (e.g., 01-system/tools/ops/video-workflow/video/analyze-video.ps1).
   - Git commit reflecting these changes.

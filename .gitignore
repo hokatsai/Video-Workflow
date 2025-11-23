@@ -1,3 +1,5 @@
 /02-inputs/
 /03-outputs/
-
+/.venv/
+**/.browser-profiles/
+**/whisperx/

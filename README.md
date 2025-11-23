@@ -32,4 +32,4 @@ Whenever you want to process a video, just run the master script:
 
 ## How It Works
 
-The `Start-Workflow.ps1` script is a master controller that calls other specialized scripts located in the `tools/cookie/` directory. This system is designed to be robust and easy to use. All outputs are automatically saved and organized in the `03-outputs` directory.
+The `Start-Workflow.ps1` script is a master controller that calls other specialized scripts located in `01-system/tools/ops/video-workflow/cookie/`. This system is designed to be robust and easy to use. All outputs are automatically saved and organized in the `03-outputs` directory.

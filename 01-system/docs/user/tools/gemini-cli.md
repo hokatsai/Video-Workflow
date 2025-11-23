@@ -15,7 +15,7 @@
 
 ## ��Ҋ�÷����𲽣�
 1. �T�w�����Ū��a�� (���� repo root) �öi�� `@` ����d
-2. ���ɮ׼Ʊ`pwsh tools/gemini-run.ps1 -Targets @('src/', 'tests/') -Query '���ݨ䪺���P�ؿ�'`
+2. ���ɮ׼Ʊ`pwsh 01-system/tools/llms/gemini-cli/gemini-run.ps1 -Targets @('src/', 'tests/') -Query '���ݨ䪺���P�ؿ�'`
 3. ���� CLI ���ͪ����G�ñN prompt/response ��W���`03-outputs/gemini-cli/<���>` ��
 
 ## ����

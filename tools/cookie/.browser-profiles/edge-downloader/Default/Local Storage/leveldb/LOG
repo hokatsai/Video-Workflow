@@ -1,8 +1,0 @@
-2025/11/16-17:37:30.238 d74 Creating DB E:\Youtube-Downloader\.browser-profiles\edge-downloader\Default\Local Storage\leveldb since it was missing.
-2025/11/16-17:37:30.250 d74 Reusing MANIFEST E:\Youtube-Downloader\.browser-profiles\edge-downloader\Default\Local Storage\leveldb/MANIFEST-000001
-2025/11/16-17:38:53.459 3a64 Level-0 table #5: started
-2025/11/16-17:38:53.462 3a64 Level-0 table #5: 20902 bytes OK
-2025/11/16-17:38:53.464 3a64 Delete type=0 #3
-2025/11/16-17:40:50.311 3a64 Level-0 table #7: started
-2025/11/16-17:40:50.314 3a64 Level-0 table #7: 35901 bytes OK
-2025/11/16-17:40:50.316 3a64 Delete type=0 #4

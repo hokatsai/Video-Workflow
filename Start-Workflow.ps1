@@ -11,10 +11,10 @@
 $PSScriptRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 
 # --- Define Paths to our Playbook Scripts ---
-$toolsDir = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot 'tools\cookie')).Path
-$downloadScript = Join-Path $toolsDir "download-video.ps1"
-$subtitlesScript = Join-Path $toolsDir "get-subtitles.ps1"
-$transcribeScript = Join-Path $toolsDir "run-transcription.ps1"
+$cookieToolsDir = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '01-system\tools\ops\video-workflow\cookie')).Path
+$downloadScript = Join-Path $cookieToolsDir "download-video.ps1"
+$subtitlesScript = Join-Path $cookieToolsDir "get-subtitles.ps1"
+$transcribeScript = Join-Path $cookieToolsDir "run-transcription.ps1"
 
 # --- Main Menu Loop ---
 while ($true) {

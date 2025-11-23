@@ -31,18 +31,22 @@
 > éœ€ç¶­è­·ä¸‹åˆ—æ¨¹ç‹€åœ–ï¼Œè‹¥åµæ¸¬åˆ°çµæ§‹æ¼‚ç§»æˆ–æ–¼å•Ÿå‹•æ™‚ç™¼ç¾å·®ç•°ï¼Œå³åˆ»æ›´æ–°ã€‚
 ```
 /
-â”œâ”€â”€ 01-system/
-â”‚   â”œâ”€â”€ configs/{env.example, apis/{README.md, API-Keys.md}, tools/registry.yaml}
-â”‚   â”œâ”€â”€ docs/
-â”‚   â”‚   â”œâ”€â”€ agents/{PLAYBOOKS.md, TOOLS.md, TROUBLESHOOTING.md, SYSTEM_MEMORY.md, STATE.md, BOOTSTRAP.md, memory/YYYY-MM.md}
-â”‚   â”‚   â”œâ”€â”€ prompts/{README.md, INDEX.md, examples/prompt-template.md, prompt-*.md, collections/...}
-â”‚   â”‚   â”œâ”€â”€ tools-reference/{README.md, INDEX.md, TEMPLATE.md, <tool>.md}
-â”‚   â”‚   â””â”€â”€ user/{README.md, INDEX.md, tools/...}  # ä½¿ç”¨è€…æ–‡ä»¶ï¼ˆç¹ä¸­ï¼‰
-â”‚   â””â”€â”€ tools/{ops/, llms/, stt/, _categories-README.md}
-â”œâ”€â”€ 02-inputs/{downloads/}
-â”œâ”€â”€ 03-outputs/{README.md, <tool>/}
-â””â”€â”€ tools/{README.md, gemini-run.ps1, ...}
+- 01-system/
+  - configs/{env.example, apis/{README.md, API-Keys.md}, tools/registry.yaml}
+  - docs/
+    - agents/{PLAYBOOKS.md, TOOLS.md, TROUBLESHOOTING.md, SYSTEM_MEMORY.md, STATE.md, BOOTSTRAP.md, memory/YYYY-MM.md}
+    - prompts/{README.md, INDEX.md, examples/prompt-template.md, prompt-*.md, collections/...}
+    - tools-reference/{README.md, INDEX.md, TEMPLATE.md, <tool>.md}
+    - user/{README.md, INDEX.md, tools/...}  # ä½¿ç”¨è€…æ–‡ä»¶ï¼ˆç¹ä¸­ï¼‰
+  - tools/{ops/, llms/, stt/, _categories-README.md}
+    - llms/gemini-cli/{README.md, gemini-run.ps1}
+    - ops/video-workflow/{README.md, cookie/, video/, whisperx/}
+- 02-inputs/{downloads/}
+- 03-outputs/{README.md, <tool>/}
 ```
+
+
+``
 
 ## è¼¸å‡ºè¦å‰‡ï¼ˆå–®ä¸€çœŸå¯¦ä¾†æºï¼‰
 - å…¨éƒ¨ç”¢ç‰©å¿…é ˆå¯«å…¥ `03-outputs/<tool>/`ï¼Œç”¨å·¥å…·æˆ–æµç¨‹ä»£ç¨±ï¼ˆä¾‹ï¼š`report-writer`ã€`image-cleanup`ï¼‰ã€‚
@@ -54,7 +58,7 @@
 - **Playbooks**ï¼š`01-system/docs/agents/PLAYBOOKS.md`ï¼›ç”¨æ–¼å°æ‡‰èªå¥èˆ‡æ„åœ–ã€‚
 - **Prompts Library**ï¼š`01-system/docs/prompts/`ï¼Œä¸¦ç”± `INDEX.md` ç¶­è­·ç´¢å¼•ã€‚
 - **å·¥å…·å¯¦é«”**ï¼š`01-system/tools/<category>/...`ï¼Œä¸¦ä»¥ `registry.yaml` ç‚ºæ¬Šå¨ç™»éŒ„ã€‚
-- **Helper scripts**ï¼šå„²å­˜åœ¨æ ¹ç›®éŒ„ `tools/`ï¼Œé›†ä¸­å¯é‡ç”¨çš„è‡ªå‹•åŒ–è…³æœ¬ï¼ˆå¦‚ Gemini åŒ…è£å™¨ï¼‰ã€‚
+- **Helper scripts**ï¼šå„²å­˜åœ¨æ ¹ç›®éŒ„ `01-system/tools/`ï¼Œé›†ä¸­å¯é‡ç”¨çš„è‡ªå‹•åŒ–è…³æœ¬ï¼ˆå¦‚ Gemini åŒ…è£å™¨ï¼‰ã€‚
 - **Tool indexï¼ˆäººé¡å¯è®€ï¼‰**ï¼š`01-system/docs/agents/TOOLS.md`ï¼Œå°æ‡‰ registry çš„æ‘˜è¦ã€‚
 - **å·¥å…·åƒè€ƒèªªæ˜**ï¼š`01-system/docs/tools-reference/`ï¼Œè¨˜éŒ„æ¯å€‹å·¥å…·çš„æ“ä½œæ‰‹å†Šã€‚é‡åˆ°å·¥å…·ä¸æ˜æ™‚ï¼Œå‹™å¿…å…ˆæŸ¥é–±æ­¤å€ã€‚
 - **ä½¿ç”¨è€…æ–‡ä»¶ï¼ˆç¹ä¸­ï¼‰**ï¼š`01-system/docs/user/INDEX.md`ï¼Œä¸¦æ–¼ `docs/user/tools/<tool>.md` æä¾›å„å·¥å…·è©³ç´°èªªæ˜ã€‚
@@ -78,40 +82,24 @@
 6. **å®Œæˆå¾Œå›åˆ° Execution Mode**ã€‚
 
 ## æ¨¡æ¿ï¼š`01-system/docs/user/tools/<tool-name>.md`
-```md
-# <å·¥å…·åç¨±>
-**åˆ†é¡**ï¼š<llms|stt|ops|â€¦>
-**ç‰ˆæœ¬**ï¼šv0.1ï¼ˆå»ºç«‹æ—¥æœŸï¼šYYYY-MM-DDï¼‰
-
-## åŠŸèƒ½æ¦‚è¿°
-- èªªæ˜æ­¤å·¥å…·å¯è§£æ±ºçš„å•é¡Œèˆ‡æƒ…å¢ƒã€‚
-
-## åƒæ•¸èªªæ˜
-- `param1`ï¼šç”¨é€”/å‹åˆ¥/é è¨­
-- `param2`ï¼šâ€¦â€¦
-
-## æ“ä½œæ­¥é©Ÿ
-1. æ­¥é©Ÿä¸€
-2. æ­¥é©ŸäºŒ
-3. æ­¥é©Ÿä¸‰
-
-## è¼¸å‡º
-- **ä¸»è¦è¼¸å‡º**ï¼šèªªæ˜è·¯å¾‘èˆ‡å…§å®¹ï¼ˆä¾‹ï¼š`03-outputs/<tool-name>/...`ï¼‰
-- **ç¨½æ ¸éœ€æ±‚**ï¼šè‹¥éœ€é¡å¤–é©—è­‰è«‹æ˜è¼‰ã€‚
-
-## è¼¸å…¥ / å„²å­˜ä½ç½®
-- è¼¸å…¥ä¾†æºï¼š`02-inputs/...`
-- å„²å­˜ä½ç½®ï¼š`03-outputs/<tool-name>/...`
-
-## é™åˆ¶èˆ‡æ³¨æ„äº‹é …
-- å®‰å…¨/æˆæ¬Šé™åˆ¶ç­‰ã€‚
-
-## ç–‘é›£æ’è§£
-- è‹¥é‡éŒ¯èª¤ï¼Œè«‹åƒç…§ `01-system/docs/agents/TROUBLESHOOTING.md`ã€‚
-
-## ç‰ˆæœ¬è¨˜éŒ„
-- v0.1ï¼ˆYYYY-MM-DDï¼‰ï¼šé¦–æ¬¡å»ºç«‹ã€‚
 ```
+/
+- 01-system/
+  - configs/{env.example, apis/{README.md, API-Keys.md}, tools/registry.yaml}
+  - docs/
+    - agents/{PLAYBOOKS.md, TOOLS.md, TROUBLESHOOTING.md, SYSTEM_MEMORY.md, STATE.md, BOOTSTRAP.md, memory/YYYY-MM.md}
+    - prompts/{README.md, INDEX.md, examples/prompt-template.md, prompt-*.md, collections/...}
+    - tools-reference/{README.md, INDEX.md, TEMPLATE.md, <tool>.md}
+    - user/{README.md, INDEX.md, tools/...}  # ä½¿ç”¨è€…æ–‡ä»¶ï¼ˆç¹ä¸­ï¼‰
+  - tools/{ops/, llms/, stt/, _categories-README.md}
+    - llms/gemini-cli/{README.md, gemini-run.ps1}
+    - ops/video-workflow/{README.md, cookie/, video/, whisperx/}
+- 02-inputs/{downloads/}
+- 03-outputs/{README.md, <tool>/}
+```
+
+
+
 
 ## æ¨¡æ¿ï¼š`01-system/docs/prompts/prompt-<domain>-<intent>.md`
 ```md
@@ -213,17 +201,18 @@ safety:
 
 **æœ¬è¦ç¯„ç‚ºå”¯ä¸€æ¬Šå¨ä¾†æºã€‚**
 
-## Ïµ½y¼Ü˜‹ŸÄ£Ê½ (Systems Architect Mode)
-- **Ó|°l—l¼ş**: ®”Ê¹ÓÃÕßÕˆÇóŒ¦¹¤×÷Á÷³ÌßMĞĞÑ}±P¡¢ƒ»¯¡¢»ò½â›Q¸ù±¾ĞÔ†–î}•r£¨ÀıÈç£º¡¸ÍÎÒÑ}±PÒ»ÏÂ¡¹¡¢¡¸ƒ»¯¹¤×÷Á÷¡¹¡¢¡¸ÕÒ³ö†–î}K½â›Q¡¹£©¡£
-- **ºËĞÄÒâˆD**: ÌøÃ“†Î¼ƒµÄÖ¸ÁîˆÌĞĞ£¬ÒÔ¼Ü˜‹ŸµÄÒ•½Ç·ÖÎö¡¢ÔOÓ‹K¹Ì»¯¸ü½¡‰Ñ¡¢¸ßĞ§µÄ×Ô„Ó»¯½â›Q·½°¸¡£
-- **ˆÌĞĞ²½óE**:
-  1. **Ñ}ÅÌ·ÖÎö (Review & Analyze)**: È«Ãæ™zÒ•ÏÈÇ°µÄ¹¤×÷Á÷£¬×R„eÆäÖĞµÄ¡¸­h¾³Ä¦²Á¡¹¡¢¡¸¾WÂ·Ä¦²Á¡¹Åc¡¸½»»¥Ä¦²Á¡¹¡£
-  2. **¸ù±¾Ô­Òò¶¨Î» (Root Cause Analysis)**: ÕÒ³öŒ§ÖÂÁ÷³ÌÈßéL»òÊ§”¡µÄ¸ù±¾Ô­Òò£¬ÀıÈç­h¾³Î´Öª¡¢ÒÀÙ‡í—È±Ê§¡¢´óĞÍ†Îów²Ù×÷µÈ¡£
-  3. **Ìá³öƒ»¯·½°¸ (Propose New Architecture)**: ÔOÓ‹ĞÂµÄ¡¢Ä£½M»¯µÄ¹¤×÷Á÷„¡±¾£¨Playbook£©£¬°üº¬­h¾³îA™z¡¢ÈÎ„Õ²ğ·Ö¡¢KĞĞÌÀí¡¢½Y¹û…R¿‚µÈ²ßÂÔ¡£
-  4. **¹Ì»¯¹¤×÷Á÷ (Codify Workflow)**:
-     - Œ¢ĞÂµÄ Playbook Œ‘Èë  1-system/docs/agents/PLAYBOOKS.md¡£
-     - „“½¨KµÇä›Œ¬FĞÂÁ÷³ÌËùĞèµÄÄ_±¾Åc¹¤¾ß£¨ÀıÈç equirements.txt, setup-video-env.ps1£©¡£
-     - ¸üĞÂ±¾™n°¸ (AGENTS.md)£¬ów¬FĞÂÔöµÄÄÜÁ¦Åc½ÇÉ«¡£
-- **®a³ö**:
-  - ¸üĞÂááµÄ PLAYBOOKS.md Åc AGENTS.md¡£
-  - ÓÃì¶Œ¬F×Ô„Ó»¯Á÷³ÌµÄĞÂ¹¤¾ß»òÄ_±¾¡£
+## ÏµyÜ˜Ä£Ê½ (Systems Architect Mode)
+- **|ll**: Ê¹ÕˆóŒ¦¹M}PQÔ†}rç£º}PÒ»Â¡Ò³}KQ
+- **D**: Ã“Î¼Ö¸Ğ£Ô¼Ü˜Ò•Ç·OÓ‹KÌ»Ñ¡Ğ§Ô„Ó»Q
+- **Ğ²E**:
+  1. **}Ì· (Review & Analyze)**: È«zÒ•Ç°Ä¹ReĞµÄ¡hÄ¦WÂ·Ä¦cÄ¦
+  2. **Ô­Î» (Root Cause Analysis)**: Ò³LÊ§Ä¸Ô­hÎ´ÖªÙ‡È±Ê§Í†wÈ¡
+  3. ** (Propose New Architecture)**: OÓ‹ÂµÄ¡Ä£MÄ¹PlaybookhAzÎ„Õ²Ö¡KÌYRÈ²Ô¡
+  4. **Ì» (Codify Workflow)**:
+     - Âµ Playbook  1-system/docs/agents/PLAYBOOKS.md
+     - Kä›ŒF_cß£ 
+equirements.txt, setup-video-env.ps1
+     - Â±n (AGENTS.md)wFcÉ«
+- **a**:
+  -  PLAYBOOKS.md c AGENTS.md
+  - ì¶ŒFÔ„Ó»ÌµÂ¹ß»_

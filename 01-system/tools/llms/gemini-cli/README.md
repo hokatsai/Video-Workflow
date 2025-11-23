@@ -7,7 +7,7 @@
 ### Purpose
 - Provide a sanctioned interface for Gemini CLI when analyzing large workspaces.
 - Capture every invocation's prompt/response for reproducibility.
-- Keep helper automations (e.g., `tools/gemini-run.ps1`) discoverable and documented.
+- Keep helper automations (e.g., `01-system/tools/llms/gemini-cli/gemini-run.ps1`) discoverable and documented.
 
 ### Usage Patterns
 1. **Ad-hoc CLI:**  
@@ -17,7 +17,7 @@
    ```
 2. **Logged Runs via Script:**  
    ```powershell
-   pwsh tools/gemini-run.ps1 -Targets @('AGENTS.md','01-system/docs/agents/') `
+   pwsh 01-system/tools/llms/gemini-cli/gemini-run.ps1 -Targets @('AGENTS.md','01-system/docs/agents/') `
        -Query 'Compare agent runtime rules with supporting docs' `
        -Model 'gemini-1.5-pro'
    ```
