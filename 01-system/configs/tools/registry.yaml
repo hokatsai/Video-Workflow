@@ -25,3 +25,356 @@ tools:
           - objective
       command: >
         review --objective="{objective}"
+  - tool:
+      name: audio_compressor
+      category: ops
+      description: Compresses an audio file to a specified bitrate. Useful for reducing file size.
+      args_schema:
+        type: object
+        properties:
+          input_path:
+            type: string
+            description: "Path to the input audio file."
+          output_path:
+            type: string
+            description: "Path for the compressed output audio file."
+          bitrate:
+            type: string
+            description: "Target bitrate (e.g., '64k', '128k'). Default is '64k'."
+        required:
+          - input_path
+          - output_path
+      command: >
+        .\.venv\Scripts\python.exe 01-system/tools/ops/audio_compressor.py {input_path} {output_path} --bitrate {bitrate}
+  - tool:
+      name: clips_adapter
+      category: ops
+      description: "Adapts a video clip to a new resolution and/or frame rate."
+      args_schema:
+        type: object
+        properties:
+          input_path:
+            type: string
+            description: "Path to the input video file."
+          output_path:
+            type: string
+            description: "Path for the output adapted video file."
+          resolution:
+            type: string
+            description: "New resolution as 'widthxheight' (e.g., '1920x1080')."
+          fps:
+            type: integer
+            description: "New frame rate (e.g., 25, 30)."
+        required:
+          - input_path
+          - output_path
+      command: >
+        .\.venv\Scripts\python.exe 01-system/tools/ops/clips_adapter.py {input_path} {output_path} --resolution {resolution} --fps {fps}
+  - tool:
+      name: clips_copy_exporter
+      category: ops
+      description: "Copies or moves a file or all files in a directory to a destination."
+      args_schema:
+        type: object
+        properties:
+          source_path:
+            type: string
+            description: "The source file or directory to export from."
+          destination_path:
+            type: string
+            description: "The destination directory to export to."
+          move:
+            type: boolean
+            description: "If True, move the files instead of copying them."
+        required:
+          - source_path
+          - destination_path
+      command: >
+        .\.venv\Scripts\python.exe 01-system/tools/ops/clips_copy_exporter.py {source_path} {destination_path} [--move]
+  - tool:
+      name: clips_orchestrator
+      category: ops
+      description: "Automates the process of extracting, adapting, and exporting multiple video clips from a single source video."
+      args_schema:
+        type: object
+        properties:
+          input_video:
+            type: string
+            description: "Path to the source video file."
+          timestamps_file:
+            type: string
+            description: "Path to a JSON file containing clip timestamps. Format: [{'start': 0.0, 'end': 10.0, 'name': 'intro'}, ...]"
+          output_base_dir:
+            type: string
+            description: "Base directory to save all processed clips."
+          resolution:
+            type: string
+            description: "Optional: Target resolution for adapted clips (e.g., '1280x720')."
+          fps:
+            type: integer
+            description: "Optional: Target frame rate for adapted clips (e.g., 25, 30)."
+        required:
+          - input_video
+          - timestamps_file
+          - output_base_dir
+      command: >
+        .\.venv\Scripts\python.exe 01-system/tools/ops/clips_orchestrator.py {input_video} {timestamps_file} {output_base_dir} --resolution {resolution} --fps {fps}
+  - tool:
+      name: lecture_handout_local_pipeline
+      category: ops
+      description: "Creates a formatted Markdown handout from a plain text file (e.g., a transcript)."
+      args_schema:
+        type: object
+        properties:
+          input_file:
+            type: string
+            description: "Path to the input plain text file."
+          output_file:
+            type: string
+            description: "Path for the output Markdown file."
+          title:
+            type: string
+            description: "The title for the handout."
+        required:
+          - input_file
+          - output_file
+      command: >
+        .\.venv\Scripts\python.exe 01-system/tools/ops/lecture_handout_local_pipeline.py {input_file} {output_file} --title "{title}"
+  - tool:
+      name: lecture_handout_pipeline
+      category: ops
+      description: "Creates a formatted Markdown handout from a text file using an AI model."
+      args_schema:
+        type: object
+        properties:
+          input_file:
+            type: string
+            description: "Path to the input text file (transcript)."
+          output_file:
+            type: string
+            description: "Path for the output Markdown file."
+          prompt_file:
+            type: string
+            description: "Optional: Path to a text file with a custom prompt. Use '{content}' as a placeholder."
+          title:
+            type: string
+            description: "Title for the handout."
+        required:
+          - input_file
+          - output_file
+      command: >
+        .\.venv\Scripts\python.exe 01-system/tools/ops/lecture_handout_pipeline.py {input_file} {output_file} --title "{title}" --prompt_file {prompt_file}
+  - tool:
+      name: memo_article_pipeline
+      category: ops
+      description: "Creates a formatted Markdown article from a text file using an AI model."
+      args_schema:
+        type: object
+        properties:
+          input_file:
+            type: string
+            description: "Path to the input text file."
+          output_file:
+            type: string
+            description: "Path for the output Markdown file."
+          prompt_file:
+            type: string
+            description: "Optional: Path to a text file with a custom prompt. Use '{content}' as a placeholder."
+          title:
+            type: string
+            description: "Title for the article."
+        required:
+          - input_file
+          - output_file
+      command: >
+        .\.venv\Scripts\python.exe 01-system/tools/ops/memo_article_pipeline.py {input_file} {output_file} --title "{title}" --prompt_file {prompt_file}
+  - tool:
+      name: memo_transcript_pipeline
+      category: ops
+      description: "Creates a formatted Markdown memo/minutes from a transcript file using an AI model."
+      args_schema:
+        type: object
+        properties:
+          input_file:
+            type: string
+            description: "Path to the input transcript file."
+          output_file:
+            type: string
+            description: "Path for the output Markdown memo file."
+          prompt_file:
+            type: string
+            description: "Optional: Path to a text file with a custom prompt. Use '{content}' as a placeholder."
+          title:
+            type: string
+            description: "Title for the memo."
+        required:
+          - input_file
+          - output_file
+      command: >
+        .\.venv\Scripts\python.exe 01-system/tools/ops/memo_transcript_pipeline.py {input_file} {output_file} --title "{title}" --prompt_file {prompt_file}
+  - tool:
+      name: subtitle_corrector
+      category: ops
+      description: "Corrects grammar, spelling, and punctuation in a subtitle file using an AI model."
+      args_schema:
+        type: object
+        properties:
+          input_file:
+            type: string
+            description: "Path to the input SRT subtitle file."
+          output_file:
+            type: string
+            description: "Path for the corrected output SRT file."
+          prompt_file:
+            type: string
+            description: "Optional: Path to a text file with a custom prompt. Use '{content}' as a placeholder."
+        required:
+          - input_file
+          - output_file
+      command: >
+        .\.venv\Scripts\python.exe 01-system/tools/ops/subtitle_corrector.py {input_file} {output_file} --prompt_file {prompt_file}
+  - tool:
+      name: subtitle_line_refiner
+      category: ops
+      description: "Refines the style and flow of a subtitle file using an AI model."
+      args_schema:
+        type: object
+        properties:
+          input_file:
+            type: string
+            description: "Path to the input SRT subtitle file."
+          output_file:
+            type: string
+            description: "Path for the refined output SRT file."
+          prompt_file:
+            type: string
+            description: "Optional: Path to a text file with a custom prompt. Use '{content}' as a placeholder."
+        required:
+          - input_file
+          - output_file
+      command: >
+        .\.venv\Scripts\python.exe 01-system/tools/ops/subtitle_line_refiner.py {input_file} {output_file} --prompt_file {prompt_file}
+  - tool:
+      name: subtitle_pipeline
+      category: ops
+      description: "Full pipeline to correct and refine subtitles."
+      args_schema:
+        type: object
+        properties:
+          input_file:
+            type: string
+            description: "Path to the initial SRT subtitle file."
+          output_file:
+            type: string
+            description: "Path for the final, refined output SRT file."
+          corrector_prompt:
+            type: string
+            description: "Optional: Path to a custom prompt file for the correction step."
+          refiner_prompt:
+            type: string
+            description: "Optional: Path to a custom prompt file for the refinement step."
+        required:
+          - input_file
+          - output_file
+      command: >
+        .\.venv\Scripts\python.exe 01-system/tools/ops/subtitle_pipeline.py {input_file} {output_file} --corrector_prompt {corrector_prompt} --refiner_prompt {refiner_prompt}
+  - tool:
+      name: zh_subtitle_converter
+      category: ops
+      description: "Converts the characters in a subtitle file between Simplified and Traditional Chinese."
+      args_schema:
+        type: object
+        properties:
+          input_file:
+            type: string
+            description: "Path to the input SRT subtitle file."
+          output_file:
+            type: string
+            description: "Path for the converted output SRT file."
+          config:
+            type: string
+            description: "Conversion configuration: 's2t' (Simplified to Traditional) or 't2s' (Traditional to Simplified)."
+        required:
+          - input_file
+          - output_file
+          - config
+      command: >
+        .\.venv\Scripts\python.exe 01-system/tools/ops/zh_subtitle_converter.py {input_file} {output_file} {config}
+  - tool:
+      name: video_compressor
+      category: ops
+      description: "Compresses a video file by re-encoding it with a specified bitrate."
+      args_schema:
+        type: object
+        properties:
+          input_path:
+            type: string
+            description: "Path to the input video file."
+          output_path:
+            type: string
+            description: "Path for the compressed output video file."
+          bitrate:
+            type: string
+            description: "Target video bitrate (e.g., '500k', '1000k'). Default is '500k'."
+        required:
+          - input_path
+          - output_path
+      command: >
+        .\.venv\Scripts\python.exe 01-system/tools/ops/video_compressor.py {input_path} {output_path} --bitrate {bitrate}
+  - tool:
+      name: groq_stt_pipeline
+      category: stt
+      description: "Compresses project audio/video (extracts audio), transcribes with Groq whisper-large-v3, emits text+SRT, and optionally combines plain text transcripts."
+      args_schema:
+        type: object
+        properties:
+          input_dir:
+            type: string
+            description: "Directory containing audio files to process."
+          output_base:
+            type: string
+            description: "Base output directory (default 03-outputs/groq_stt_pipeline)."
+          language:
+            type: string
+            description: "Optional ISO-639-1 language hint."
+          prompt:
+            type: string
+            description: "Optional prompt to guide STT style."
+          run_id:
+            type: string
+            description: "Optional run identifier override."
+          max_size_mb:
+            type: number
+            description: "Maximum compressed file size before STT (default 24.5)."
+          ogg_bitrate:
+            type: string
+            description: "OGG bitrate when fallback is used (default 48k)."
+          no_combine:
+            type: boolean
+            description: "Skip the combined Markdown output."
+          no_ogg_fallback:
+            type: boolean
+            description: "Disable OGG fallback when FLAC exceeds the limit."
+          combine_filename:
+            type: string
+            description: "Name for the combined Markdown file."
+        required:
+          - input_dir
+      command: >
+        .\.venv\Scripts\python.exe 01-system/tools/stt/groq_stt_pipeline.py --input_dir {input_dir} --output_base {output_base} --language {language} --prompt {prompt} --run_id {run_id} --max_size_mb {max_size_mb} --ogg_bitrate {ogg_bitrate} [--no_combine] [--no_ogg_fallback] --combine_filename {combine_filename}
+  - tool:
+      name: gemini_text_generator
+      category: llms
+      description: "A Python module function to generate text using the Gemini API. Meant to be imported by other tools."
+      args_schema:
+        type: object
+        properties:
+          prompt:
+            type: string
+            description: "The text prompt to send to the model."
+          model_name:
+            type: string
+            description: "The name of the model to use (e.g., 'gemini-pro'). Defaults to 'gemini-pro'."
+        required:
+          - prompt
+      command: "from tools.llms.gemini.gemini import generate_text; generate_text(prompt='{prompt}', model_name='{model_name}')"

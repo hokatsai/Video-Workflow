@@ -32,11 +32,14 @@ Document common intents here using the Lean playbook format (phrase -> intent ->
 - **Phrases / Aliases**: "setup video workflow", "initialize video environment", "prepare for video analysis"
 - **Intent**: Create a stable and self-contained Python virtual environment for video processing tasks to ensure all dependencies are met and to perform a pre-flight check.
 - **Steps**:
-  1.  Create a equirements.txt file listing all necessary Python packages (whisperx, fmpeg-python, etc.).
+  1.  Create a 
+equirements.txt file listing all necessary Python packages (whisperx, 
+fmpeg-python, etc.).
   2.  Create a setup script (e.g., setup-video-env.ps1) that:
       a. Creates a Python virtual environment (.venv).
       b. Activates it.
-      c. Installs the packages from equirements.txt.
+      c. Installs the packages from 
+equirements.txt.
   3.  Execute the setup script.
   4.  Perform a "pre-flight check" by transcribing a very short, silent audio file to force all models to download and compile, catching any environment/hardware issues upfront.
   5.  Save the fact that the environment is ready for future tasks.
@@ -70,20 +73,31 @@ Document common intents here using the Lean playbook format (phrase -> intent ->
   - A summary file **with timestamps** (e.g., `03-outputs/summaries/声乐教学总结/Lesson_1_Summary_(带时间戳).txt`).
   - Temporary audio chunks during processing.
 
+## Playbook: Groq STT Project Memos
+- **Phrases / Aliases**: "Groq STT", "專案錄音轉文字", "批次轉錄並合併 Markdown", "生成 SRT + 純文字"
+- **Intent**: 將專案資料夾中的多個錄音檔或影片先壓縮/撥取音訊並受限，再用 Groq `whisper-large-v3` 轉成純文字與 SRT，並可依檔名順序合併成單一 Markdown（無時間戳）。
+- **Steps**:
+  1. 確認輸入資料夾、語言提示（可空白）、是否需要合併純文字；提醒 Groq free tier 單檔上限 25 MB，模型固定 `whisper-large-v3`。
+  2. 在 repo root 執行 `.\.venv\Scripts\python.exe 01-system/tools/stt/groq_stt_pipeline.py --input_dir "<folder>" [--language <iso>] [--prompt "<style>"] [--no_combine]`。預設先轉 16k mono FLAC，若超限會自動 OGG fallback（48k）；影片會自動撥取音訊再送 STT。
+  3. 取得輸出：`transcripts/*.md`（純文字）、`subtitles/*.srt`（帶時間戳）、`raw/*.json`（原始回應）、`combined/<name>.md`（合併純文字，可關閉）、`run_meta.json`。
+- **Outputs**: `03-outputs/groq_stt_pipeline/<run-id>/...`
+
 ## Playbook: Agent Self-Optimization & Workflow Review
 - **Phrases / Aliases**: "复盘流程", "优化agent", "分析优化空间", "系统架构师思考", "提升工作效率", "整体工作流优化", "agent更新", "playbook更新"
 - **Intent**: To conduct a comprehensive analysis of a specified (or last major) workflow, identify bottlenecks and root causes, propose and implement optimizations, and update the agent's internal documentation (AGENTS.md, PLAYBOOKS.md) and relevant scripts accordingly.
 - **Steps**:
   1.  **Acknowledge & Clarify**: Confirm understanding of the request for self-optimization and clarify the target workflow if ambiguous.
   2.  **Workflow Analysis**: Review the specified previous workflow, analyzing execution logs, outputs, and user feedback to identify inefficiencies, errors, and their root causes (e.g., environment brittleness, network friction, script logic flaws, tool limitations, interactive overhead).
-  3.  **Identify Bottlenecks & Root Causes**: Detail specific points of failure or slowness (e.g., Git SSL errors, ead_file ignore patterns, manual steps, redundant actions).
+  3.  **Identify Bottlenecks & Root Causes**: Detail specific points of failure or slowness (e.g., Git SSL errors, 
+ead_file ignore patterns, manual steps, redundant actions).
   4.  **Propose Optimization Plan**: Develop a structured plan for improvement, categorizing solutions into:
       a.  **Script/Tool Refactoring**: Modifying/creating internal scripts (e.g., nalyze-video.ps1).
       b.  **Documentation Updates**: Updating PLAYBOOKS.md, AGENTS.md.
       c.  **Tool/Memory Enhancements**: Suggesting new tool features or memory facts.
       d.  **User-side Actions**: Identifying persistent issues requiring user intervention (e.g., network configuration).
   5.  **Implement Changes (Build Mode)**:
-      a.  Execute script/tool modifications using eplace or write_file.
+      a.  Execute script/tool modifications using 
+eplace or write_file.
       b.  Update PLAYBOOKS.md and AGENTS.md.
       c.  Create new scripts/tools in appropriate directories (e.g., 	ools/video/).
   6.  **Verify & Test**: Where feasible, run small tests (e.g., pre-flight checks) to verify the implemented optimizations.

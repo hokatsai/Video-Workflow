@@ -1,5 +1,7 @@
-# Ê¹ÓÃÕßË÷Òı
+ï»¿# ä½¿ç”¨è€…æ–‡ä»¶ç´¢å¼•
 
-- `tools/`£º¸÷¹¤¾ßµÄÕfÃ÷í“ÃæÅc°¸Àı¡£
-- `README.md`£º¿ìËÙ¸ÅÓ^ÅcŒ§Ó[Æğüc¡£
-- Gemini CLI ï¿½ï¿½ï¿½Xï¿½Ğ«Ô²uï¿½ï¿½`01-system/docs/user/tools/gemini-cli.md`
+- å·¥å…·èªªæ˜ä½æ–¼ `01-system/docs/user/tools/`ã€‚
+- å»ºè­°å…ˆé–±è®€ `01-system/docs/user/README.md` å–å¾—æ•´é«”èªªæ˜ã€‚
+- å·¥å…·æ¸…å–®ï¼š
+  - Gemini CLIï¼š`01-system/docs/user/tools/gemini-cli.md`
+  - Groq STT Pipelineï¼š`01-system/docs/user/tools/groq_stt_pipeline.md`

@@ -15,3 +15,6 @@
 
 2025-11-18 - Tool reference hub + AGENTS zh :: added docs/tools-reference/ + zh-TW rewrite of AGENTS with reference reminders | ensures tool usage documented + user can read core spec | 03-outputs/gemini-cli/
 2025-11-23 - Tools relocated to system :: change | impact: moved root tools into 01-system/tools (video-workflow, gemini-run) and updated paths/docs | artifacts: n/a
+
+2025-11-23 – Groq STT pipeline :: built groq_stt_pipeline tool (compression+Groq whisper-large-v3 text/SRT+combined markdown) with docs/playbook | 03-outputs/groq_stt_pipeline/20251123-smoke3/combined/project-memos.md
+2025-11-23 – Groq STT video support :: pipeline now accepts video inputs (audio extraction) with doc/playbook/user guide updates + retry tuned | 03-outputs/groq_stt_pipeline/20251123-video-smoke/combined/video.md
