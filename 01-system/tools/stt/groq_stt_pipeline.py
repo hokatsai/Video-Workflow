@@ -149,6 +149,9 @@ def transcribe_with_retry(
             return transcribe(audio_path, api_key, language, prompt)
         except Exception as exc:
             last_exc = exc
+            message = str(exc)
+            if "401" in message or "invalid_api_key" in message.lower():
+                raise RuntimeError(f"Transcription aborted due to auth error: {exc}")
             if attempt == retries:
                 break
             print(f"  - Retry {attempt}/{retries} after error: {exc}")

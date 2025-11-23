@@ -1,8 +1,8 @@
-﻿# State
+# State
 
-- **Phase**: Bootstrap (2025-11)
-- **Summary**: Gemini CLI tooling plus新的工具參考區與繁中版 AGENTS 已就緒，所有大型分析與工具說明皆能記錄與查閱。
+- **Phase**: Execution (2025-11)
+- **Summary**: STT pipelines established (Groq whisper-large-v3 + ElevenLabs scribe_v1), API references organized under docs/api-reference, playbooks refreshed with clean zh content.
 - **Next Steps**:
-  1. 依需求使用 Gemini Playbook 與 `01-system/tools/llms/gemini-cli/gemini-run.ps1` 進行大範圍分析並引用輸出。
-  2. 新增其他 helper script 時，持續更新 `tools/README.md` 與 `docs/tools-reference/`，並執行 Lean Logflow。
-  3. 若工具使用說明有擴充或新工具加入，記得同步更新 AGENTS 參考指引與 `STATE.md`。
+  1. Obtain stable XI_API_KEY (paid/tier) and add a successful ElevenLabs smoke test log.
+  2. Harden STT error handling (early abort on 401, partial success manifest) and normalize CRLF/text settings.
+  3. Keep AGENTS/PLAYBOOKS in sync with new tools; log significant runs to SYSTEM_MEMORY.md.
