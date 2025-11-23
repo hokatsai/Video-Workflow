@@ -37,6 +37,7 @@
     - agents/{PLAYBOOKS.md, TOOLS.md, TROUBLESHOOTING.md, SYSTEM_MEMORY.md, STATE.md, BOOTSTRAP.md, memory/YYYY-MM.md}
     - prompts/{README.md, INDEX.md, examples/prompt-template.md, prompt-*.md, collections/...}
     - tools-reference/{README.md, INDEX.md, TEMPLATE.md, <tool>.md}
+    - api-reference/{README.md, Groq STT API Doc.md, Groq STT API Reference.md}
     - user/{README.md, INDEX.md, tools/{audio_compressor.md, video_cutter.md, clips_adapter.md, clips_copy_exporter.md, clips_orchestrator.md, lecture_handout_local_pipeline.md, lecture_handout_pipeline.md, memo_article_pipeline.md, memo_transcript_pipeline.md, subtitle_corrector.md, subtitle_line_refiner.md, subtitle_pipeline.md, zh_subtitle_converter.md, gemini.md, groq_stt_pipeline.md}}
   - tools/
     - llms/
