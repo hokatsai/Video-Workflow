@@ -44,7 +44,7 @@ $arguments = @(
 )
 
 # Execute the command
-& $whisperPath @arguments
+& $whisperPath @arguments >$null 2>$null
 
 # Check the exit code and provide feedback
 if ($LASTEXITCODE -eq 0) {
