@@ -5,5 +5,6 @@
 - 目前內容：
   - Groq STT API Doc.md
   - Groq STT API Reference.md
+  - ElevenLabs STT API Reference.md
 
 若移動或新增其他 API 文件，請同步在 AGENTS.md 樹狀結構中維護此資料夾。
