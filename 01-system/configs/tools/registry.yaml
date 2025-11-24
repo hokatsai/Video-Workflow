@@ -400,7 +400,7 @@ tools:
   - tool:
       name: gemini_text_generator
       category: llms
-      description: "A Python module function to generate text using the Gemini API. Meant to be imported by other tools."
+      description: "A Python module function to generate text using the Gemini API (default gemini-2.5-pro). Meant to be imported by other tools."
       args_schema:
         type: object
         properties:
@@ -409,7 +409,59 @@ tools:
             description: "The text prompt to send to the model."
           model_name:
             type: string
-            description: "The name of the model to use (e.g., 'gemini-pro'). Defaults to 'gemini-pro'."
+            description: "The name of the model to use (e.g., 'gemini-2.5-pro'). Defaults to 'gemini-2.5-pro'."
         required:
           - prompt
       command: "from tools.llms.gemini.gemini import generate_text; generate_text(prompt='{prompt}', model_name='{model_name}')"
+  - tool:
+      name: gemini_api_tool
+      category: llms
+      description: "CLI helper to call Gemini API (gemini-2.5-pro default, logs prompt/response to 03-outputs/gemini-api/<run-id>/)."
+      args_schema:
+        type: object
+        properties:
+          prompt:
+            type: string
+            description: "Prompt to send to Gemini."
+          model:
+            type: string
+            description: "Gemini model name. Default gemini-2.5-pro."
+          output_name:
+            type: string
+            description: "Optional run folder name under 03-outputs/gemini-api/."
+        required:
+          - prompt
+      command: >
+        .\.venv\Scripts\python.exe 01-system/tools/llms/gemini/gemini_api_tool.py --prompt "{prompt}" --model {model} --output_name {output_name}
+  - tool:
+      name: memo_gemini_pipeline
+      category: ops
+      description: "Refines combined memo transcripts with Gemini (can run groq/eleven STT first or consume existing combined Markdown)."
+      args_schema:
+        type: object
+        properties:
+          combined_file:
+            type: string
+            description: "Path to existing combined Markdown (skip STT)."
+          input_dir:
+            type: string
+            description: "Folder with audio/video files (run STT to produce combined)."
+          stt_tool:
+            type: string
+            description: "groq or eleven when input_dir is provided."
+          prompt_file:
+            type: string
+            description: "Prompt file to guide refinement (default ???????? md)."
+          model:
+            type: string
+            description: "Gemini model (default gemini-2.5-pro)."
+          title:
+            type: string
+            description: "Title for refined Markdown."
+          run_id:
+            type: string
+            description: "Optional run identifier override."
+        required:
+          - prompt_file
+      command: >
+        .\.venv\Scripts\python.exe 01-system/tools/ops/memo_gemini_pipeline.py --combined_file {combined_file} --input_dir {input_dir} --stt_tool {stt_tool} --prompt_file "{prompt_file}" --model {model} --title "{title}" --run_id {run_id}

@@ -25,7 +25,7 @@ def get_gemini_api_key():
         print(f"An error occurred while reading the API key: {e}")
         return None
 
-def generate_text(prompt: str, model_name: str = "gemini-pro"):
+def generate_text(prompt: str, model_name: str = "gemini-2.5-pro"):
     """
     Generates text using the specified Gemini model.
 
@@ -65,4 +65,3 @@ if __name__ == '__main__':
     #     print("\nSuccessfully retrieved API key.")
     # else:
     #     print("\nFailed to retrieve API key.")
-

@@ -45,6 +45,7 @@
       - gemini/
         - __init__.py
         - gemini.py
+        - gemini_api_tool.py
         - gemini.playbook.md
     - ops/
       - video-workflow/{README.md, cookie/, video/, whisperx/}
@@ -66,6 +67,7 @@
       - memo_article_pipeline.playbook.md
       - memo_transcript_pipeline.py
       - memo_transcript_pipeline.playbook.md
+      - memo_gemini_pipeline.py
       - subtitle_corrector.py
       - subtitle_corrector.playbook.md
       - subtitle_line_refiner.py
@@ -75,8 +77,9 @@
       - zh_subtitle_converter.py
       - zh_subtitle_converter.playbook.md
       - tool.py
-    - stt/{groq_stt_pipeline.py, eleven_scribe_pipeline.py}
+    - stt/{groq_stt_pipeline.py, eleven_scribe_pipeline.py, transcript_utils.py}
     - _categories-README.md
+    - tth/{README.md, gemini-default.ps1}
 - 02-inputs/{downloads/}
 - 03-outputs/{README.md, <tool>/}
 ```
@@ -95,6 +98,8 @@
 - **Prompts Library**：`01-system/docs/prompts/`，並由 `INDEX.md` 維護索引。
 - **工具實體**：`01-system/tools/<category>/...`，並以 `registry.yaml` 為權威登錄。
 - **Helper scripts**：儲存在根目錄 `01-system/tools/`，集中可重用的自動化腳本（如 Gemini 包裝器）。
+- **tth ????**?`01-system/tools/tth/`???? Gemini `gemini-2.5-pro` ?????????? `gemini-2.5-flash`?? `gemini-default.ps1`??
+- Gemini ?????`gemini-2.5-pro`????????????? `gemini-2.5-flash`????? `01-system/tools/tth/gemini-default.ps1` ????????
 - **Tool index（人類可讀）**：`01-system/docs/agents/TOOLS.md`，對應 registry 的摘要。
 - **工具參考說明**：`01-system/docs/tools-reference/`，記錄每個工具的操作手冊。遇到工具不明時，務必先查閱此區。
 - **使用者文件（繁中）**：`01-system/docs/user/INDEX.md`，並於 `docs/user/tools/<tool>.md` 提供各工具詳細說明。

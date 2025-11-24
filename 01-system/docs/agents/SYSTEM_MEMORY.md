@@ -20,3 +20,12 @@
 2025-11-23 â€“ Groq STT video support :: pipeline now accepts video inputs (audio extraction) with doc/playbook/user guide updates + retry tuned | 03-outputs/groq_stt_pipeline/20251123-video-smoke/combined/video.md
 2025-11-24 â€“ ElevenLabs scribe pipeline :: added eleven_scribe_pipeline tool (scribe_v1 STT text/SRT/combined), docs, playbook; awaiting XI_API_KEY for smoke test | 03-outputs/eleven_scribe_pipeline/
 2025-11-24 â€“ Playbooks cleanup + ElevenLabs ref doc :: rewrote PLAYBOOKS.md (zh), added ElevenLabs STT API reference; Groq youtube run 03-outputs/groq_stt_pipeline/20251124-groq-youtube3/combined/youtube_video_dVY-qqXyv5U.md
+2025-11-24 - Gemini CLI smoke test :: attempted gemini-run on gemini docs; TLS handshake to cloudcode-pa.googleapis.com failed | no Gemini response; check network/proxy or CLI cert trust if persists | 03-outputs/gemini-cli/20251124-233042/response.txt
+2025-11-24 - Gemini CLI smoke test (network restored) :: gemini-run succeeded after one quota retry; wrapper usage summary captured | 03-outputs/gemini-cli/20251124-233415/response.txt
+2025-11-24 - Gemini 2.5-pro smoke :: gemini-run with -Model gemini-2.5-pro confirmed model usage | 03-outputs/gemini-cli/20251124-233806/response.txt
+2025-11-24 - Gemini 2.5 îAÔO²ßÂÔ + tth ¿ì½İÄ_±¾ :: ÔO¶¨ 2.5-pro¡ú2.5-flash îAÔOÄ£ĞÍ¡¢ÔöÑa Playbook/AGENTS/TOOLS KĞÂÔö gemini-default.ps1£»ŸŸ‡èœyÔ‡İ”³ö | 03-outputs/gemini-cli/20251124-234600/response.txt
+2025-11-24 - STT combineÄ£½M»¯ :: ³é³ö¹²ÓÃ transcript_utils£¨natural sort/ensure_dir/combined markdown£©£¬Groq/Eleven pipelines¸ÄÓÃÄ£½M£»˜ä îˆDÔö transcript_utils | no new tests (py_compile ok)
+2025-11-24 - Groq STT run dV_FjwwQfiE-ogg32 :: 32k OGG fallback; text/SRT/combined produced | 03-outputs/groq_stt_pipeline/dV_FjwwQfiE-ogg32/
+2025-11-25 - Gemini API tool + doc :: added gemini_api_tool (defaults 2.5-pro), new Gemini API reference; smoke test failed: API key invalid | 03-outputs/gemini-api/gemini-2.5-pro-poem/response.txt
+2025-11-25 - Gemini API smoke (valid key) :: gemini-2.5-pro å”è©©æ¸¬è©¦æˆåŠŸ | 03-outputs/gemini-api/gemini-2.5-pro-poem/response.txt
+2025-11-25 - Memo Gemini pipeline :: adds memo_gemini_pipeline (STT+Gemini flow) + smoke on existing combined | 03-outputs/memo_gemini_pipeline/dV_FjwwQfiE-gemini/refined.md

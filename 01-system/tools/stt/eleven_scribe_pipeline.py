@@ -12,20 +12,13 @@ from typing import Any, Dict, List, Sequence, Tuple
 
 import requests
 
+from transcript_utils import build_combined_markdown, ensure_dir, natural_key, write_text
+
 DEFAULT_MODEL = "scribe_v1"
 FREE_LIMIT_BYTES = 3 * 1024 * 1024 * 1024  # API allows up to ~3GB
 AUDIO_EXTENSIONS = {".flac", ".mp3", ".mpeg", ".mpga", ".m4a", ".ogg", ".wav"}
 VIDEO_EXTENSIONS = {".mp4", ".webm", ".mov", ".mkv", ".avi", ".m4v", ".ts"}
 SUPPORTED_EXTENSIONS = AUDIO_EXTENSIONS | VIDEO_EXTENSIONS
-
-
-def natural_key(path: Path) -> Sequence[Any]:
-    parts = re.split(r"(\d+)", path.name)
-    return [int(p) if p.isdigit() else p.lower() for p in parts]
-
-
-def ensure_dir(path: Path) -> None:
-    path.mkdir(parents=True, exist_ok=True)
 
 
 def run_ffmpeg(input_path: Path, output_path: Path) -> None:
@@ -143,32 +136,6 @@ def collect_input_files(input_dir: Path) -> List[Path]:
     if not files:
         raise FileNotFoundError(f"No supported audio/video files found in {input_dir}")
     return sorted(files, key=natural_key)
-
-
-def write_text(path: Path, content: str) -> None:
-    path.write_text(content, encoding="utf-8")
-
-
-def build_combined_markdown(
-    items: List[Dict[str, Any]],
-    run_id: str,
-    input_dir: Path,
-    model: str,
-    language: str | None,
-) -> str:
-    lines = [
-        "# Combined Transcripts (Plain Text)",
-        f"- Run: {run_id}",
-        f"- Source: {input_dir}",
-        f"- Model: {model}",
-        f"- Language hint: {language or 'auto-detect'}",
-        "",
-    ]
-    for item in items:
-        lines.append(f"## {item['source_name']}")
-        lines.append(item["text"].strip())
-        lines.append("")
-    return "\n".join(lines).strip() + "\n"
 
 
 def parse_args() -> argparse.Namespace:
