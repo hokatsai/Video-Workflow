@@ -1,1 +1,0 @@
-﻿@AGENTS.md請以繁體中文完整改寫這份檔案，保持原有章節標題、清單與格式，並加入以下變更：(1) 在「Repository Layout」樹狀圖新增 `01-system/docs/tools-reference/` 與 `tools/`。 (2) Startup Checklist 與 Execution Mode 說明需要提醒當不確定工具操作時先查 `01-system/docs/tools-reference/`。 (3) 「Where Things Live」列表補充該資料夾的作用。其餘語意維持不變。
