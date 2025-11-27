@@ -29,3 +29,4 @@
 2025-11-25 - Gemini API tool + doc :: added gemini_api_tool (defaults 2.5-pro), new Gemini API reference; smoke test failed: API key invalid | 03-outputs/gemini-api/gemini-2.5-pro-poem/response.txt
 2025-11-25 - Gemini API smoke (valid key) :: gemini-2.5-pro 唐詩測試成功 | 03-outputs/gemini-api/gemini-2.5-pro-poem/response.txt
 2025-11-25 - Memo Gemini pipeline :: adds memo_gemini_pipeline (STT+Gemini flow) + smoke on existing combined | 03-outputs/memo_gemini_pipeline/dV_FjwwQfiE-gemini/refined.md
+2025-11-28 - YouTube download g8VgzgnskI0 :: downloaded mp4 plus zh/zh-Hant subtitles via yt-dlp (Edge cookies) | offline copy ready | 03-outputs/youtube-download/2025-11-28_g8VgzgnskI0/
