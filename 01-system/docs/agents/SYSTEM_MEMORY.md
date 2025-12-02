@@ -30,3 +30,10 @@
 2025-11-25 - Gemini API smoke (valid key) :: gemini-2.5-pro 唐詩測試成功 | 03-outputs/gemini-api/gemini-2.5-pro-poem/response.txt
 2025-11-25 - Memo Gemini pipeline :: adds memo_gemini_pipeline (STT+Gemini flow) + smoke on existing combined | 03-outputs/memo_gemini_pipeline/dV_FjwwQfiE-gemini/refined.md
 2025-11-28 - YouTube download g8VgzgnskI0 :: downloaded mp4 plus zh/zh-Hant subtitles via yt-dlp (Edge cookies) | offline copy ready | 03-outputs/youtube-download/2025-11-28_g8VgzgnskI0/
+2025-11-28 - YourStyle/VideoMachine prompt tools :: added prompt generator scripts, registry/docs/playbooks updated | 03-outputs/yourstyle-agent/, 03-outputs/videomachine-agent/
+2025-11-29 - YouTube download Elsh6-tcYRA :: fetched mp4 + zh-Hans/zh-Hant/en SRT via yt-dlp (chrome cookies + EJS solver) | 03-outputs/youtube-download/2025-11-29_Elsh6-tcYRA/
+2025-12-01 - AGENTS API key source :: change: added default API-Keys.md lookup instruction; impact: centralizes key retrieval guidance; artifacts: AGENTS.md
+2025-12-01 - Groq STT BV1UBCWBdE8Y :: ran groq_stt_pipeline on bilibili video (zh); outputs text+SRT+combined | 03-outputs/groq_stt_pipeline/BV1UBCWBdE8Y-groq/
+2025-12-01 - Video structure note (BV1UBCWBdE8Y) :: analyzed script structure; archived reusable pattern for future copywriting | 03-outputs/video-structure-notes/BV1UBCWBdE8Y-structure.md
+
+2025-12-02 - 儲存盤點 :: change: 盤點可刪除媒體並列路徑; impact: 可釋放約 4.4GB 並標示重複來源; artifacts: 03-outputs/storage-audit/2025-12-02_disk-audit.md

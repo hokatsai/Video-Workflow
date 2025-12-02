@@ -96,6 +96,7 @@
 ## 重要資源位置
 - **Playbooks**：`01-system/docs/agents/PLAYBOOKS.md`；用於對應語句與意圖。
 - **Prompts Library**：`01-system/docs/prompts/`，並由 `INDEX.md` 維護索引。
+- **API Key 單一來源**：`01-system/configs/apis/API-Keys.md`；任何需要調度 API Key 時，預設先查此檔。
 - **工具實體**：`01-system/tools/<category>/...`，並以 `registry.yaml` 為權威登錄。
 - **Helper scripts**：儲存在根目錄 `01-system/tools/`，集中可重用的自動化腳本（如 Gemini 包裝器）。
 - **tth ????**?`01-system/tools/tth/`???? Gemini `gemini-2.5-pro` ?????????? `gemini-2.5-flash`?? `gemini-default.ps1`??

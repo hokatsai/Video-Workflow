@@ -465,3 +465,49 @@ tools:
           - prompt_file
       command: >
         .\.venv\Scripts\python.exe 01-system/tools/ops/memo_gemini_pipeline.py --combined_file {combined_file} --input_dir {input_dir} --stt_tool {stt_tool} --prompt_file "{prompt_file}" --model {model} --title "{title}" --run_id {run_id}
+  - tool:
+      name: yourstyle_agent_prompt
+      category: ops
+      description: "Generates ready-to-send prompts for YourStyle content agent (/video, /long, /title, /matrix, /quote, /ideas, /persona) and saves to 03-outputs/yourstyle-agent/<run-id>/prompt.txt."
+      args_schema:
+        type: object
+        properties:
+          mode:
+            type: string
+            description: "video|long|title|matrix|quote|ideas|persona"
+          topic:
+            type: string
+            description: "Content topic (optional for matrix/persona)."
+          count:
+            type: integer
+            description: "Number of ideas when mode=ideas (default 10)."
+          run_id:
+            type: string
+            description: "Optional run identifier override."
+          output_base:
+            type: string
+            description: "Output base directory (default 03-outputs/yourstyle-agent)."
+        required:
+          - mode
+        command: >
+          .\.venv\Scripts\python.exe 01-system/tools/ops/yourstyle_agent_prompt.py --mode {mode} --topic "{topic}" --count {count} --run-id {run_id} --output-base {output_base}
+  - tool:
+      name: videomachine_agent_prompt
+      category: ops
+      description: "Generates ready-to-send prompts for VideoMachine agent (/auto) and saves to 03-outputs/videomachine-agent/<run-id>/prompt.txt."
+      args_schema:
+        type: object
+        properties:
+          topic:
+            type: string
+            description: "Video topic."
+          run_id:
+            type: string
+            description: "Optional run identifier override."
+          output_base:
+            type: string
+            description: "Output base directory (default 03-outputs/videomachine-agent)."
+        required:
+          - topic
+        command: >
+          .\.venv\Scripts\python.exe 01-system/tools/ops/videomachine_agent_prompt.py --topic "{topic}" --run-id {run_id} --output-base {output_base}

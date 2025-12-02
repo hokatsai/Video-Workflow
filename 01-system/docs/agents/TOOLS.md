@@ -23,3 +23,5 @@
 | subtitle_pipeline | ops | Automates the subtitle correction and refinement process. | 03-outputs/subtitle_pipeline/ |
 | zh_subtitle_converter | ops | Converts subtitle files between Simplified and Traditional Chinese. | 03-outputs/zh_subtitle_converter/ |
 | video_compressor | ops | Compresses a video file by re-encoding it with a lower bitrate. | 03-outputs/video_compressor/ |
+| yourstyle_agent_prompt | ops | 產生 YourStyle 內容 Agent 可用的提示詞（/video、/long、/title、/matrix、/quote、/ideas、/persona），輸出 prompt.txt | 03-outputs/yourstyle-agent/ |
+| videomachine_agent_prompt | ops | 產生 VideoMachine 自動短影片腳本包的提示詞（/auto），輸出 prompt.txt | 03-outputs/videomachine-agent/ |

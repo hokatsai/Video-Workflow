@@ -99,6 +99,21 @@ Document common intents here using the Lean playbook format (phrase -> intent ->
   4. ?? `response.txt` ???????????? `SYSTEM_MEMORY.md`??????
 - **Outputs**: `03-outputs/gemini-cli/<run-id>/response.txt`
 
+## Playbook: YourStyle Prompt Generator
+- **Phrases / Aliases**: "用 YourStyle 出腳本", "/video <topic>", "/long <topic>", "/title <topic>", "/matrix", "/quote <topic>", "/ideas <n>", "/persona"
+- **Intent**: 產生符合卡卡語氣的提示詞，貼給 LLM 生成內容
+- **Steps**:
+  1. 在 repo root 執行 `.\.venv\Scripts\python.exe 01-system/tools/ops/yourstyle_agent_prompt.py --mode <video|long|title|matrix|quote|ideas|persona> --topic "<topic>" [--count <n>] [--run-id <name>]`
+  2. 取得 `03-outputs/yourstyle-agent/<run-id>/prompt.txt`，貼給指定模型
+- **Outputs**: `03-outputs/yourstyle-agent/<run-id>/prompt.txt`
+
+## Playbook: VideoMachine Prompt Generator
+- **Phrases / Aliases**: "auto 影片包", "/auto <topic>", "VideoMachine 腳本"
+- **Intent**: 產生全自動短影片製作包提示詞，貼給 LLM 生成腳本+分鏡等
+- **Steps**:
+  1. 在 repo root 執行 `.\.venv\Scripts\python.exe 01-system/tools/ops/videomachine_agent_prompt.py --topic "<topic>" [--run-id <name>]`
+  2. 取得 `03-outputs/videomachine-agent/<run-id>/prompt.txt`，貼給指定模型
+- **Outputs**: `03-outputs/videomachine-agent/<run-id>/prompt.txt`
 
 ## Playbook: Memo ????STT + Gemini ???
 - **Phrases / Aliases**: "??? memo ???", "????????", "????? Gemini"?"??+??"
